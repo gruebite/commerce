@@ -1,6 +1,9 @@
 package com.github.gruebite.commerce;
 
+import com.github.gruebite.commerce.competencies.AdvancementTriggers;
+import com.github.gruebite.commerce.competencies.CompetencyTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.ICriterionTrigger;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -10,6 +13,7 @@ import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
@@ -19,6 +23,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -46,7 +52,18 @@ public class Commerce
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        //CriteriaTriggers.register();
+        Method method;
+        method = ObfuscationReflectionHelper.findMethod(CriteriaTriggers.class, "register", ICriterionTrigger.class);
+        method.setAccessible(true);
+
+        try {
+            method.invoke(null, AdvancementTriggers.COMPETENCY_TRIGGER);
+        }
+        catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
@@ -86,6 +103,5 @@ public class Commerce
             // register a new block here
             LOGGER.info("HELLO from Register Block");
         }
-
     }
 }

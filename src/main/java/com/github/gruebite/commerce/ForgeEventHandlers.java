@@ -1,23 +1,16 @@
 package com.github.gruebite.commerce;
 
-import com.github.gruebite.commerce.competencies.CompetenciesContainer;
+import com.github.gruebite.commerce.competencies.AdvancementTriggers;
 import com.github.gruebite.commerce.competencies.CompetenciesContainerProvider;
 import com.github.gruebite.commerce.playerdata.PlayerCompetencies;
 import com.github.gruebite.commerce.playerdata.PlayerProperties;
 import com.github.gruebite.commerce.playerdata.PropertiesDispatcher;
-import com.sun.org.apache.xpath.internal.operations.String;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.inventory.container.SimpleNamedContainerProvider;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -26,9 +19,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import javax.annotation.Nullable;
-import java.util.Objects;
 
 public class ForgeEventHandlers {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -54,18 +44,15 @@ public class ForgeEventHandlers {
     @SubscribeEvent
     public void onRightClick(PlayerInteractEvent.RightClickItem event) {
         if (event.getPlayer().world.isRemote) {
-            LOGGER.info("RIGHTCLICK on client");
             return;
         }
         LOGGER.info("RIGHTCLICK {}", event.getItemStack().getItem().getRegistryName());
         if (event.getItemStack().getItem().equals(Items.STICK))  {
-            ItemStack trigger = new ItemStack(Items.PUMPKIN);
-            int slot = event.getPlayer().inventory.getFirstEmptyStack();
-            event.getPlayer().inventory.addItemStackToInventory(trigger);
-            event.getPlayer().tick();
-            //event.getPlayer().inventory.removeStackFromSlot(slot);
-            event.getPlayer().container.detectAndSendChanges();
-            event.setCanceled(true);
+            event.getPlayer().getCapability(PlayerProperties.PLAYER_COMPETENCIES).ifPresent(competencies -> {
+                LOGGER.info("COMPETENT");
+                competencies.becomeCompetent(PlayerCompetencies.Index.CARPENTER);
+                AdvancementTriggers.COMPETENCY_TRIGGER.trigger((ServerPlayerEntity)event.getPlayer(), PlayerCompetencies.Index.CARPENTER);
+            });
         } else if (event.getItemStack().getItem().equals(Items.PUMPKIN)) {
             event.getPlayer().openContainer(
                     new SimpleNamedContainerProvider(

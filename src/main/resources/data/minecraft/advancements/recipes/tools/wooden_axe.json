@@ -6,6 +6,14 @@
     ]
   },
   "criteria": {
+    "gained_X": {
+      "trigger": "commerce:gained_competency",
+      "conditions": {
+        "competencies": [
+          "foobar"
+        ]
+      }
+    },
     "has_stick": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -26,7 +34,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_stick"
+      "has_stick",
+      "gained_X"
     ]
   ]
 }

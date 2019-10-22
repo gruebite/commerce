@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class PlayerCompetencies {
     public enum Index {
-        CARPENTER("");
+        CARPENTER("carpenter");
 
         public String name = "";
 
