@@ -4,6 +4,8 @@ import com.github.gruebite.commerce.competencies.CompetenciesContainerProvider;
 import com.github.gruebite.commerce.competencies.Competency;
 import com.github.gruebite.commerce.playerdata.PlayerProperties;
 import com.github.gruebite.commerce.playerdata.PropertiesDispatcher;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -11,6 +13,7 @@ import net.minecraft.inventory.container.SimpleNamedContainerProvider;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -36,6 +39,25 @@ public class ForgeEventHandlers {
     public void onBreak(PlayerEvent.BreakSpeed event) {
         if (event.getEntity().world.isRemote) {
             return;
+        }
+        if (!(event.getEntity() instanceof ServerPlayerEntity)) {
+            return;
+        }
+        ToolType toolType = event.getState().getBlock().getHarvestTool(event.getState());
+        ServerPlayerEntity player = (ServerPlayerEntity)event.getPlayer();
+        if (toolType == ToolType.SHOVEL && !PlayerProperties.isCompetent(player, Competency.EXCAVATING)) {
+            player.sendMessage(new StringTextComponent("You are not proficient at this!"));
+            event.setNewSpeed(0.01f);
+        } else if (toolType == ToolType.AXE && !PlayerProperties.isCompetent(player, Competency.WOODCUTTING)) {
+            player.sendMessage(new StringTextComponent("You are not proficient at this!"));
+            event.setNewSpeed(0.01f);
+        } else if (toolType == ToolType.PICKAXE && event.getState().getBlock().getTags().contains(new ResourceLocation("forge", "ores"))
+                    && !PlayerProperties.isCompetent(player, Competency.MINING)) {
+            player.sendMessage(new StringTextComponent("You are not proficient at this!"));
+            event.setNewSpeed(0.01f);
+        } else if (toolType == ToolType.PICKAXE && !PlayerProperties.isCompetent(player, Competency.MINING) && !PlayerProperties.isCompetent(player, Competency.EXCAVATING)) {
+            player.sendMessage(new StringTextComponent("You are not proficient at this!"));
+            event.setNewSpeed(0.01f);
         }
         //event.setCanceled(true);
     }

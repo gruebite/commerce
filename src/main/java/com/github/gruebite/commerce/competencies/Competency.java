@@ -32,7 +32,6 @@ public enum Competency {
     ECHANTING("enchanting", Items.BOOK, 9, new String[]{"Learn to enchant.", "*Can use enchanting table.*"}),
     ENGINEERING("engineering", Items.REDSTONE, 9, new String[]{"Learn to craft using redstone."}),
     GEMCUTTING("gemcutting", Items.DIAMOND, 12, new String[]{"Learn to craft using diamonds."}),
-
     ;
 
     private final String name;
