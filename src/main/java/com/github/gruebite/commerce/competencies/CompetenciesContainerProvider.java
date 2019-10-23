@@ -6,6 +6,8 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextFormatting;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -14,7 +16,7 @@ public class CompetenciesContainerProvider implements INamedContainerProvider {
     @Nonnull
     @Override
     public ITextComponent getDisplayName() {
-        return new StringTextComponent("Competencies");
+        return new StringTextComponent("Competencies").setStyle(new Style().setColor(TextFormatting.DARK_PURPLE));
     }
 
     @Nullable

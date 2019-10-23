@@ -6,21 +6,11 @@
     ]
   },
   "criteria": {
-    "gained_X": {
+    "gained_carpentry": {
       "trigger": "commerce:gained_competency",
       "conditions": {
         "competencies": [
-          "foobar"
-        ]
-      }
-    },
-    "has_stick": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:pumpkin"
-          }
+          "carpentry"
         ]
       }
     },
@@ -34,8 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_stick",
-      "gained_X"
+      "gained_carpentry"
     ]
   ]
 }

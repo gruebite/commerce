@@ -1,15 +1,17 @@
 package com.github.gruebite.commerce;
 
 import com.github.gruebite.commerce.competencies.AdvancementTriggers;
-import com.github.gruebite.commerce.competencies.CompetencyTrigger;
+import com.github.gruebite.commerce.playerdata.PlayerProperties;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.ICriterionTrigger;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.nbt.INBT;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +25,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Nullable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.stream.Collectors;
@@ -52,6 +55,7 @@ public class Commerce
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        // Register custom advancement triggers.
         Method method;
         method = ObfuscationReflectionHelper.findMethod(CriteriaTriggers.class, "register", ICriterionTrigger.class);
         method.setAccessible(true);
@@ -63,6 +67,21 @@ public class Commerce
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        CapabilityManager.INSTANCE.register(PlayerProperties.class, new Capability.IStorage<PlayerProperties>() {
+            @Nullable
+            @Override
+            public INBT writeNBT(Capability<PlayerProperties> capability, PlayerProperties instance, Direction side) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void readNBT(Capability<PlayerProperties> capability, PlayerProperties instance, Direction side, INBT nbt) {
+                throw new UnsupportedOperationException();
+            }
+        }, () -> {
+            throw new UnsupportedOperationException();
+        });
 
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");

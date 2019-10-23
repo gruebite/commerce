@@ -12,13 +12,13 @@ import javax.annotation.Nullable;
 
 public class PropertiesDispatcher implements ICapabilityProvider, INBTSerializable<CompoundNBT> {
 
-    private PlayerCompetencies playerCompetencies = new PlayerCompetencies();
+    private PlayerProperties playerProperties = new PlayerProperties();
 
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap == PlayerProperties.PLAYER_COMPETENCIES) {
-            return LazyOptional.of(() -> (T)playerCompetencies);
+        if (cap == PlayerProperties.MARKER) {
+            return LazyOptional.of(() -> (T) playerProperties);
         }
         return LazyOptional.empty();
     }
@@ -32,12 +32,12 @@ public class PropertiesDispatcher implements ICapabilityProvider, INBTSerializab
     @Override
     public CompoundNBT serializeNBT() {
         CompoundNBT nbt = new CompoundNBT();
-        playerCompetencies.saveNBTData(nbt);
+        playerProperties.saveNBTData(nbt);
         return nbt;
     }
 
     @Override
     public void deserializeNBT(CompoundNBT nbt) {
-        playerCompetencies.loadNBTData(nbt);
+        playerProperties.loadNBTData(nbt);
     }
 }

@@ -1,8 +1,7 @@
 package com.github.gruebite.commerce;
 
-import com.github.gruebite.commerce.competencies.AdvancementTriggers;
 import com.github.gruebite.commerce.competencies.CompetenciesContainerProvider;
-import com.github.gruebite.commerce.playerdata.PlayerCompetencies;
+import com.github.gruebite.commerce.competencies.Competency;
 import com.github.gruebite.commerce.playerdata.PlayerProperties;
 import com.github.gruebite.commerce.playerdata.PropertiesDispatcher;
 import net.minecraft.entity.Entity;
@@ -48,11 +47,7 @@ public class ForgeEventHandlers {
         }
         LOGGER.info("RIGHTCLICK {}", event.getItemStack().getItem().getRegistryName());
         if (event.getItemStack().getItem().equals(Items.STICK))  {
-            event.getPlayer().getCapability(PlayerProperties.PLAYER_COMPETENCIES).ifPresent(competencies -> {
-                LOGGER.info("COMPETENT");
-                competencies.becomeCompetent(PlayerCompetencies.Index.CARPENTER);
-                AdvancementTriggers.COMPETENCY_TRIGGER.trigger((ServerPlayerEntity)event.getPlayer(), PlayerCompetencies.Index.CARPENTER);
-            });
+            PlayerProperties.becomeCompetent((ServerPlayerEntity)event.getPlayer(), Competency.CARPENTRY);
         } else if (event.getItemStack().getItem().equals(Items.PUMPKIN)) {
             event.getPlayer().openContainer(
                     new SimpleNamedContainerProvider(
@@ -65,7 +60,7 @@ public class ForgeEventHandlers {
     @SubscribeEvent
     public void onEntityConstructing(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof PlayerEntity) {
-            if (!event.getObject().getCapability(PlayerProperties.PLAYER_COMPETENCIES).isPresent()) {
+            if (!event.getObject().getCapability(PlayerProperties.MARKER).isPresent()) {
                 event.addCapability(new ResourceLocation(Commerce.MODID, "properties"), new PropertiesDispatcher());
             }
         }
@@ -74,9 +69,9 @@ public class ForgeEventHandlers {
     @SubscribeEvent
     public void onPlayerCloned(PlayerEvent.Clone event) {
         if (event.isWasDeath()) {
-            LazyOptional<PlayerCompetencies> cap = event.getOriginal().getCapability(PlayerProperties.PLAYER_COMPETENCIES);
+            LazyOptional<PlayerProperties> cap = event.getOriginal().getCapability(PlayerProperties.MARKER);
             cap.ifPresent(oldStore -> {
-                event.getPlayer().getCapability(PlayerProperties.PLAYER_COMPETENCIES).ifPresent(newStore -> {
+                event.getPlayer().getCapability(PlayerProperties.MARKER).ifPresent(newStore -> {
                     newStore.copyFrom(oldStore);
                 });
             });
@@ -85,7 +80,7 @@ public class ForgeEventHandlers {
 
     @SubscribeEvent
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        event.getPlayer().getCapability(PlayerProperties.PLAYER_COMPETENCIES).ifPresent(note -> {
+        event.getPlayer().getCapability(PlayerProperties.MARKER).ifPresent(note -> {
             // Do player logged in stuff like add inventory.
         });
     }
