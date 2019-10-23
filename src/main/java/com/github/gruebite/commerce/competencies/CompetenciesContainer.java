@@ -21,6 +21,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class CompetenciesContainer extends ChestContainer {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -42,9 +44,16 @@ public class CompetenciesContainer extends ChestContainer {
         Inventory inv = new Inventory(9*6);
 
         for (Competency comp : Competency.values()) {
-            ItemStack stack = simpleStack(Items.OAK_PLANKS,
+            ArrayList<String> description = new ArrayList<>();
+            description.add("Cost: " + comp.getCost());
+            Collections.addAll(description, comp.getDescription());
+            Item icon = comp.getIcon();
+            if (PlayerProperties.isCompetent((ServerPlayerEntity)player, comp)) {
+                icon = Items.TORCH;
+            }
+            ItemStack stack = simpleStack(icon,
                     StringUtils.capitalize(comp.getName()), TextFormatting.YELLOW,
-                    new String[]{"Cost: " + comp.getCost(), comp.getDescription()}, TextFormatting.WHITE);
+                    description.toArray(new String[0]), TextFormatting.WHITE);
             inv.setInventorySlotContents(comp.ordinal(), stack);
         }
 
@@ -71,7 +80,7 @@ public class CompetenciesContainer extends ChestContainer {
                 Competency competency = Competency.valueOf(itemStack.getDisplayName().getString().toUpperCase());
 
                 int kp = PlayerProperties.getKnowledgePoints((ServerPlayerEntity) player);
-                if (competency.getCost() <= kp) {
+                if (competency.getCost() <= kp && !PlayerProperties.isCompetent((ServerPlayerEntity)player, competency)) {
                     PlayerProperties.setKnowledgePoints((ServerPlayerEntity)player, kp - competency.getCost());
                     PlayerProperties.becomeCompetent((ServerPlayerEntity) player, competency);
                     String kpString = "Knowledge Points: " + (kp - competency.getCost());
@@ -79,7 +88,13 @@ public class CompetenciesContainer extends ChestContainer {
                             "Info", TextFormatting.BLUE,
                             new String[]{kpString}, TextFormatting.WHITE);
                     getLowerChestInventory().setInventorySlotContents(INFO_IDX, stack);
-                } else {
+                    ItemStack old = getLowerChestInventory().getStackInSlot(slotId);
+
+                    ItemStack n = new ItemStack(Items.TORCH);
+                    n.setDisplayName(old.getDisplayName());
+                    n.setTag(old.getTag());
+                    getLowerChestInventory().setInventorySlotContents(slotId, n);
+                } else if (competency.getCost() > kp) {
                     player.sendMessage(new StringTextComponent("You do not have enough knowledge points!"));
                 }
             } catch (Exception e) {
