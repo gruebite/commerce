@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_brick_block": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:bricks"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:brick_slab"
       }
+    },
+    "gained_masonry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "masonry"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_brick_block",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_masonry"
     ]
   ]
 }

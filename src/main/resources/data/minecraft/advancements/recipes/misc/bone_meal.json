@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_bone": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:bone"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:bone_meal"
       }
+    },
+    "gained_farming": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "farming"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_bone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_farming"
     ]
   ]
 }

@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_potato": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:potato"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:baked_potato"
       }
+    },
+    "gained_cooking": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "cooking"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_potato",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_cooking"
     ]
   ]
 }

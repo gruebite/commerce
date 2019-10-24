@@ -1,4 +1,4 @@
-package com.github.gruebite.commerce.playerdata;
+package gruebite.commerce.playerdata;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;

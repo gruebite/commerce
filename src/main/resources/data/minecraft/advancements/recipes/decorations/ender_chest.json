@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_ender_eye": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:ender_eye"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:ender_chest"
       }
+    },
+    "gained_engineering": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "engineering"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_ender_eye",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_engineering"
     ]
   ]
 }

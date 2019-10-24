@@ -1,7 +1,7 @@
-package com.github.gruebite.commerce;
+package gruebite.commerce;
 
-import com.github.gruebite.commerce.competencies.AdvancementTriggers;
-import com.github.gruebite.commerce.playerdata.PlayerProperties;
+import gruebite.commerce.competencies.AdvancementTriggers;
+import gruebite.commerce.playerdata.PlayerProperties;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.ICriterionTrigger;
 import net.minecraft.block.Block;

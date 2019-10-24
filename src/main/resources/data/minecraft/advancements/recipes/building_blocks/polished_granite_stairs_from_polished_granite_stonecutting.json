@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_polished_granite": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:polished_granite"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:polished_granite_stairs_from_polished_granite_stonecutting"
       }
+    },
+    "gained_masonry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "masonry"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_polished_granite",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_masonry"
     ]
   ]
 }

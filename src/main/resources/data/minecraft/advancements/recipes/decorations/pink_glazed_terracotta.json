@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_pink_terracotta": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:pink_terracotta"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:pink_glazed_terracotta"
       }
+    },
+    "gained_pottery": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "pottery"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_pink_terracotta",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_pottery"
     ]
   ]
 }

@@ -1,71 +1,219 @@
 
-# Commece
+# Commerce
 
 ## Goals
 
-Commerce is a Minecraft mod. It's goals are:
+Commerce is a Minecraft mod. Its goals are to:
 
-* Compliment multiplayer hardcore survival Minecraft
-* Promote working together and cooperation
-* Promote economy
+* Have painless adoption by being entirely server-side.
+* Compliment vanilla Minecraft's gameplay by augmentations, not additions.
+* Encourage small communities and commerce by creating scarcity and dependence.
+* Focus on hardcore multiplayer survival and short server sessions (about a week to a month).
+
+## The Mod
+
+Commerce is entirely server side. What this means is that any vanilla client can participate in a Commerce server. However, to run the server you will need Forge, which you can download [here]().
+
+This mod does not aim to be compatible with other mods, especially if they have their own additions. This mod's primary focus is augmenting the Minecraft experience.
+
+## Augmentations
+
+One of the main goals is to make small, subtle changes with big impact on gameplay. Commerce focuses on using existing systems, just modified slightly. There are a couple exceptions, this biggest is the concept of Knowledge Points and Competencies.
 
 ## Scarcity
 
-To increase scarcity, and thus economy, players will be restricted in what
-they can do, but everyone will have these core abilities:
+Scarcity is a fundamental concept in economics. Without something being scarce, it can't have value. Scarcity can be contextual. For example, air on earth is free because of it's abundance, but for a colony on mars, or a toxic city, it could be worth something. In vanilla Minecraft, scarcity is rare; everyone can just go and get the item they desire with relative ease. A symptom of this is the usefulness of villagers is underutilized.
 
-* Can barehand dig dirt (slow), and break trees (very slow).
-* Can break basic objects like non-raw material: wood planks, fences, furnaces, stairs, leaves, wheat, etc.
-  (Blocks like furnaces are broke at the speed of trees while unarmed, very slow, except metal stuff which is impossible)
-* Can place all objects (redstone & seeds are an exception and requires certain skills).
-* Damage dealt unarmed significantly reduced.
-* Can consume potions.
-* Can interract with chests, shulker boxes, books, lecturns, etc.
-* Can use basic laborer stuff: buckets, sheers, clock, flint & steel.
-* Can use basic artisan stuff: workbench (limited), furnace (limited), couldron (limited), anvil (limited)
-   * Workbench: torches, basic items, etc.
-   * Furance: basic cooking
-   * Couldron: water
-   * Anvil: Hmmm, repairing?
+Commerce creates scarcity by gating what players can do behind *Competencies*. Everyone starts out with X Knowledge Points, or KP, which they can use to purchase. To compliment Minecraft's core progression through the attainment of items, there is not progression for Competencies, or way to gain KP. You can purchase competencies at the start of the game. All decisions are permanent though, so it might be wise to be a bit flexible in the beginning.
 
-Skills can be broken up into 2 major categories:
+There are some things that every player can do, the "Core" competencies:
 
-1. Laborer: ability to use tools and weapons; increase speed and efficiency; skills
-    1. Horseback (saddle, carrot on a stick)
-    2. Fisherman (fishing rod)
-    3. Explorer (boat, map)
-    4. Woodcutter (axe)
-    5. Miner (pickaxe, can unlock things to mine, like ores, obisidan, etc)
-    6. Digger (shovel)
-    7. Farmer (hoe)
-    8. Swordsman (sword)
-    9. Bowman (bow)
-    10. Crossbowman (crossbow)
-    11. Pikeman (trident)
-    12. Flyer (elytra)
-2. Artisan: unlocks crafting and using certain objects
-    1. Craftsman (workbench)
-       1. Metalsmith (metal tools: hoe, axe, shovel, pickaxe, lanterns)
-       2. Weaponsmith (metal sword)
-       3. Armorsmith (armor, metal+)
-       4. Leatherworker (leather armor, books)
-       5. Bowyer (bow, crossbow)
-       6. Fletcher (arrows)
-    2. Alchemist (potions, is specialized)
-    3. Enchanter (enchant, anvil for combining, is specialized for weapons or tools, or armor, etc)
-    4. Woodworker (doors, stairs, wood planks, sticks, bookshelves, fences, gates)
-    5. Glassblower (glass)
-    6. Mason (furnaces for stone, bricks, stone tools, stone sword)
-    7. Gemcutter (diamond tools and weapons)
-    8. Carographer (maps)
-    9. Politician (signs, avil for names)
-    10. Cook/Baker (furnances for stews, bread, cake, meat)
-3. Attributes
-    1. Health
-    2. Food
-    3. Swimming & Running
+Can place all objects (redstone & seeds are an exception and requires certain skills).
+Can consume potions.
+Can interract with chests, shulker boxes, books, lecturns, etc.
+Can use basic laborer stuff: buckets, sheers, clock, flint & steel.
 
-## Hardcore
+* All wooden planks
+* Crafting table
+* Scaffolding
+* Torch
+* Blue ice, packed ice, snow
+* Prismarine
+* Campfire
+* Turtle helmet
+* All blocks
+* All bricks
+* Coarse dirt
+* Jack o lantern
 
-* After every death there is a vote held by the living players on whether to restart, majority wins. You are given 24 hours to vote.
-* Restarts every week by default.
+
+### Competencies
+
+Competencies can be broken up into two categories: labor and craft. The distinction doesn't matter in game, but it's good to keep in mind where you're specializing. Too much emphasis on one category will make you more dependent, but it could also help if there is a community shortage.
+
+#### Alchemy
+
+Can use the brewing stand.
+
+* Blaze Powder
+* Fermented Spider Eye
+* Magma Cream
+
+#### Archery
+
+Can use bows and crossbows.
+
+#### Carpentry
+
+* All wooden stairs
+* All wooden fences, gates
+* All wooden slabs
+* All wooden wood
+* All wooden signs
+* Barrels
+* Chests
+* All boats
+* All beds
+* Wooden sword/tools
+* Cartography table
+* Loom
+* Armor stand
+* Ladder
+* Loom
+* Lectern
+* Doors/trapdoors
+* Fishing rod
+
+#### Cartography
+
+* Paper
+* Maps
+
+#### Cooking
+
+Can use a smoker.
+
+* Glistering melon slice
+* Golden carrot
+* Golden apple
+* Cookie, cake, bread, pumpkin pie
+* Baked potato
+* Beetroot soup, mushroom stew
+
+#### Dyeing
+
+* Dyes
+* Painting
+
+#### Enchanting
+
+Can use enchanting table.
+
+#### Engineering
+
+* Brewing stand
+* Enchanting table
+* Glowstone
+* Sea lantern
+* Ender chest
+* End rod
+* Jukebox
+* Shulkerbox
+* Smoker
+* Buttons, levers, pressure plates, hopper, comparator, daylight sensor, dispenser, dropper,
+  observer, piston, repeater, tnt, tripwire, trapped chest
+* Clock
+* Compass
+* Special rails, special minecarts
+
+#### Farming
+
+Can use a hoe.
+
+* Melon
+* Lead
+* Carrot on a stick
+* Bonemeal
+
+#### Fishing
+
+Can use fishing rod
+
+#### Fletching
+
+* Arrow/spectral arrow
+* Bow/crossbow
+
+#### Gemcutting
+
+* Diamond armor/sword
+
+#### Glassblowing
+
+* Glass bottle
+* Glass, stained glass, glass pane, stained glass pane
+
+#### Lancing
+
+Can use tridents.
+
+#### Masonry
+
+(stone includes bricks, nether bricks, prismarine, sandstone, etc)
+
+* All stone slabs
+* All stone stairs
+* All stone fences
+* All stone walls
+* All chiseled stone
+* All smooth stone
+* Stone sword/tools
+* Furnace
+
+#### Metalsmithing
+
+* Cauldron
+* Iron armor/sword/tools
+* Gold armor/sword/tools
+* Shield
+* Lantern
+* Iron bars
+* Iron door/trapdoors
+* Rail
+* Minecart
+
+#### Pottery
+
+* Terracotta, glazed, and colored
+* Clay
+* Bricks
+* Flower pot
+
+#### Riding
+
+Can mount animals.
+
+#### Seafaring
+
+Can use boats.
+
+#### Smelting
+
+Can use a furnace.
+
+#### Swordfighting
+
+Can use swords.
+
+#### Tailoring
+
+* Leather armor
+* Wool
+* Carpets
+* Banners
+* Item frame
+* Book
+
+#### Woodcutting
+
+Can use the axe.

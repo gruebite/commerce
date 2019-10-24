@@ -6,13 +6,11 @@
     ]
   },
   "criteria": {
-    "has_melon": {
-      "trigger": "minecraft:inventory_changed",
+    "gained_cooking": {
+      "trigger": "commerce:gained_competencies",
       "conditions": {
-        "items": [
-          {
-            "item": "minecraft:melon_slice"
-          }
+        "competencies": [
+          "cooking"
         ]
       }
     },
@@ -25,7 +23,7 @@
   },
   "requirements": [
     [
-      "has_melon",
+      "gained_cooking",
       "has_the_recipe"
     ]
   ]

@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_diamond": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:diamond"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:diamond_chestplate"
       }
+    },
+    "gained_gemcutting": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "gemcutting"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_diamond",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_gemcutting"
     ]
   ]
 }

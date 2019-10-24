@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_melon": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:melon_slice"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:melon"
       }
+    },
+    "gained_farming": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "farming"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_melon",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_farming"
     ]
   ]
 }

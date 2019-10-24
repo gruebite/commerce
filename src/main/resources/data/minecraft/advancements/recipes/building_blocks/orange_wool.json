@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_white_wool": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:white_wool"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:orange_wool"
       }
+    },
+    "gained_dyeing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "dyeing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_white_wool",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_dyeing"
     ]
   ]
 }

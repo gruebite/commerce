@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_black_wool": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:black_wool"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:black_bed"
       }
+    },
+    "gained_carpentry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "carpentry"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_black_wool",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_carpentry"
     ]
   ]
 }

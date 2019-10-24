@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_beetroot": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:beetroot"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:beetroot_soup"
       }
+    },
+    "gained_cooking": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "cooking"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_beetroot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_cooking"
     ]
   ]
 }

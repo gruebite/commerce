@@ -6,13 +6,11 @@
     ]
   },
   "criteria": {
-    "has_spider_eye": {
-      "trigger": "minecraft:inventory_changed",
+    "gained_alchemy": {
+      "trigger": "commerce:gained_competencies",
       "conditions": {
-        "items": [
-          {
-            "item": "minecraft:spider_eye"
-          }
+        "competencies": [
+          "alchemy"
         ]
       }
     },
@@ -25,7 +23,7 @@
   },
   "requirements": [
     [
-      "has_spider_eye",
+      "gained_alchemy",
       "has_the_recipe"
     ]
   ]

@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_blue_wool": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:blue_wool"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:blue_bed"
       }
+    },
+    "gained_carpentry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "carpentry"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_blue_wool",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_carpentry"
     ]
   ]
 }

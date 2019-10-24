@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_iron_ingot": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:iron_ingot"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:iron_chestplate"
       }
+    },
+    "gained_metalsmithing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "metalsmithing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_iron_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_metalsmithing"
     ]
   ]
 }

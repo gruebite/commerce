@@ -6,13 +6,11 @@
     ]
   },
   "criteria": {
-    "has_blaze_rod": {
-      "trigger": "minecraft:inventory_changed",
+    "gained_alchemy": {
+      "trigger": "commerce:gained_competencies",
       "conditions": {
-        "items": [
-          {
-            "item": "minecraft:blaze_rod"
-          }
+        "competencies": [
+          "alchemy"
         ]
       }
     },
@@ -25,7 +23,7 @@
   },
   "requirements": [
     [
-      "has_blaze_rod",
+      "gained_competency",
       "has_the_recipe"
     ]
   ]

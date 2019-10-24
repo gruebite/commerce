@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_yellow_wool": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:yellow_wool"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:yellow_banner"
       }
+    },
+    "gained_tailoring": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "tailoring"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_yellow_wool",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_tailoring"
     ]
   ]
 }

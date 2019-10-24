@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_redstone_ore": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:redstone_ore"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:redstone_from_blasting"
       }
+    },
+    "gained_engineering": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "engineering"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_redstone_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_engineering"
     ]
   ]
 }

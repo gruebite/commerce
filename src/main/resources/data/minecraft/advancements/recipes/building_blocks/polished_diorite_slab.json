@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_polished_diorite": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:polished_diorite"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:polished_diorite_slab"
       }
+    },
+    "gained_masonry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "masonry"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_polished_diorite",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_masonry"
     ]
   ]
 }

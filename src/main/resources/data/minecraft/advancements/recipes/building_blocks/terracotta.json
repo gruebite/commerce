@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_clay_block": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:clay"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:terracotta"
       }
+    },
+    "gained_potter": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "potter"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_clay_block",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_potter"
     ]
   ]
 }

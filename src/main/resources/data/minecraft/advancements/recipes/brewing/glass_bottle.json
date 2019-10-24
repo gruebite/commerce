@@ -6,13 +6,11 @@
     ]
   },
   "criteria": {
-    "has_glass": {
-      "trigger": "minecraft:inventory_changed",
+    "gained_glassblowing": {
+      "trigger": "commerce:gained_competencies",
       "conditions": {
-        "items": [
-          {
-            "item": "minecraft:glass"
-          }
+        "competencies": [
+          "glassblowing"
         ]
       }
     },
@@ -25,7 +23,7 @@
   },
   "requirements": [
     [
-      "has_glass",
+      "gained_glassblowing",
       "has_the_recipe"
     ]
   ]

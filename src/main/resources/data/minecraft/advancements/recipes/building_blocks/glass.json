@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_sand": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "minecraft:sand"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:glass"
       }
+    },
+    "gained_glassblowing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "glassblowing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_sand",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_glassblowing"
     ]
   ]
 }

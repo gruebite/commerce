@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_glowstone": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:glowstone"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:redstone_lamp"
       }
+    },
+    "gained_engineering": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "engineering"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_glowstone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_engineering"
     ]
   ]
 }

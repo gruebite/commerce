@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_string": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:string"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:white_wool_from_string"
       }
+    },
+    "gained_tailoring": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "tailoring"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_string",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_tailoring"
     ]
   ]
 }

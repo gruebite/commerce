@@ -6,13 +6,11 @@
     ]
   },
   "criteria": {
-    "has_gold_nugget": {
-      "trigger": "minecraft:inventory_changed",
+    "gained_cooking": {
+      "trigger": "commerce:gained_competencies",
       "conditions": {
-        "items": [
-          {
-            "item": "minecraft:gold_nugget"
-          }
+        "competencies": [
+          "cooking"
         ]
       }
     },
@@ -25,7 +23,7 @@
   },
   "requirements": [
     [
-      "has_gold_nugget",
+      "gained_cooking",
       "has_the_recipe"
     ]
   ]

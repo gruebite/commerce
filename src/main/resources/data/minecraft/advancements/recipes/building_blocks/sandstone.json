@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_sand": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:sand"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:sandstone"
       }
+    },
+    "gained_pottery": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "pottery"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_sand",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_pottery"
     ]
   ]
 }

@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_lapis_lazuli": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:lapis_lazuli"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:blue_dye"
       }
+    },
+    "gained_dyeing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "dyeing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_lapis_lazuli",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_dyeing"
     ]
   ]
 }

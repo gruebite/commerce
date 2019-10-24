@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_orange_terracotta": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:orange_terracotta"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:orange_glazed_terracotta"
       }
+    },
+    "gained_pottery": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "pottery"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_orange_terracotta",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_pottery"
     ]
   ]
 }

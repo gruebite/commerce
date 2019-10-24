@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_bed": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:white_bed"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:lime_bed_from_white_bed"
       }
+    },
+    "gained_carpentry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "carpentry"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_bed",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_carpentry"
     ]
   ]
 }

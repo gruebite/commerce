@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_yellow_flower": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:dandelion"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:yellow_dye_from_dandelion"
       }
+    },
+    "gained_dyeing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "dyeing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_yellow_flower",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_dyeing"
     ]
   ]
 }

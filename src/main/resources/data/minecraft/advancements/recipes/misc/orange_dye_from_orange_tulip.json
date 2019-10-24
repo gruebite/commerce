@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_red_flower": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:orange_tulip"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:orange_dye_from_orange_tulip"
       }
+    },
+    "gained_dyeing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "dyeing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_red_flower",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_dyeing"
     ]
   ]
 }

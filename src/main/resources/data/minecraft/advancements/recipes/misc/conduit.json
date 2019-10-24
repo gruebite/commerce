@@ -6,38 +6,25 @@
     ]
   },
   "criteria": {
-    "has_nautilus_core": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:heart_of_the_sea"
-          }
-        ]
-      }
-    },
-    "has_nautilus_shell": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:nautilus_shell"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:conduit"
       }
+    },
+    "gained_engineering": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "engineering"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_nautilus_core",
-      "has_nautilus_shell",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_engineering"
     ]
   ]
 }

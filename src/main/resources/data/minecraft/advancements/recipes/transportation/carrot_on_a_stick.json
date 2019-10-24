@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_carrot": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:carrot"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:carrot_on_a_stick"
       }
+    },
+    "gained_farming": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "farming"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_carrot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_farming"
     ]
   ]
 }

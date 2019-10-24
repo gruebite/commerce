@@ -6,13 +6,11 @@
     ]
   },
   "criteria": {
-    "has_water_bucket": {
-      "trigger": "minecraft:inventory_changed",
+    "gained_metalsmithing": {
+      "trigger": "commerce:gained_competencies",
       "conditions": {
-        "items": [
-          {
-            "item": "minecraft:water_bucket"
-          }
+        "competencies": [
+          "metalsmithing"
         ]
       }
     },
@@ -25,7 +23,7 @@
   },
   "requirements": [
     [
-      "has_water_bucket",
+      "gained_metalsmithing",
       "has_the_recipe"
     ]
   ]

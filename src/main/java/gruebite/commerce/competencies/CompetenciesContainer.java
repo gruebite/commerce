@@ -1,6 +1,6 @@
-package com.github.gruebite.commerce.competencies;
+package gruebite.commerce.competencies;
 
-import com.github.gruebite.commerce.playerdata.PlayerProperties;
+import gruebite.commerce.playerdata.PlayerProperties;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;

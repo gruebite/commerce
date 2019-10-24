@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_string": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:string"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:bow"
       }
+    },
+    "gained_fletching": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "fletching"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_string",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_fletching"
     ]
   ]
 }

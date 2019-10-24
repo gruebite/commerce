@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_minecart": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:minecart"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:rail"
       }
+    },
+    "gained_metalsmithing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "metalsmithing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_minecart",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_metalsmithing"
     ]
   ]
 }

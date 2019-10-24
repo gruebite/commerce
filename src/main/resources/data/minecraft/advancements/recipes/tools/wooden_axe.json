@@ -6,18 +6,18 @@
     ]
   },
   "criteria": {
-    "gained_carpentry": {
-      "trigger": "commerce:gained_competency",
-      "conditions": {
-        "competencies": [
-          "carpentry"
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:wooden_axe"
+      }
+    },
+    "gained_carpentry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "carpentry"
+        ]
       }
     }
   },

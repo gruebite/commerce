@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_cocoa": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:cocoa_beans"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:cookie"
       }
+    },
+    "gained_cooking": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "cooking"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_cocoa",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_cooking"
     ]
   ]
 }

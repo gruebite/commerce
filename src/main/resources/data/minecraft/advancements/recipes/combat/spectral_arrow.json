@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_glowstone_dust": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:glowstone_dust"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:spectral_arrow"
       }
+    },
+    "gained_fletching": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "fletching"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_glowstone_dust",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_fletching"
     ]
   ]
 }

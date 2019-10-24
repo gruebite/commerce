@@ -6,16 +6,6 @@
     ]
   },
   "criteria": {
-    "has_sandstone": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:sandstone"
-          }
-        ]
-      }
-    },
     "has_chiseled_sandstone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -41,14 +31,22 @@
       "conditions": {
         "recipe": "minecraft:sandstone_stairs"
       }
+    },
+    "gained_masonry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "masonry"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_sandstone",
       "has_chiseled_sandstone",
       "has_cut_sandstone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_masonry"
     ]
   ]
 }

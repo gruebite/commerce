@@ -6,13 +6,11 @@
     ]
   },
   "criteria": {
-    "has_blaze_powder": {
-      "trigger": "minecraft:inventory_changed",
+    "gained_alchemy": {
+      "trigger": "commerce:gained_competencies",
       "conditions": {
-        "items": [
-          {
-            "item": "minecraft:blaze_powder"
-          }
+        "competencies": [
+          "alchemy"
         ]
       }
     },
@@ -25,7 +23,7 @@
   },
   "requirements": [
     [
-      "has_blaze_powder",
+      "gained_alchemy",
       "has_the_recipe"
     ]
   ]

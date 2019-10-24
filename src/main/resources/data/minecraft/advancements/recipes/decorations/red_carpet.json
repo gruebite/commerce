@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_red_wool": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:red_wool"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:red_carpet"
       }
+    },
+    "gained_tailoring": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "tailoring"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_red_wool",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_tailoring"
     ]
   ]
 }

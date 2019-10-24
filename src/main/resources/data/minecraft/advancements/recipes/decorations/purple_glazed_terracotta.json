@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_purple_terracotta": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:purple_terracotta"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:purple_glazed_terracotta"
       }
+    },
+    "gained_pottery": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "pottery"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_purple_terracotta",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_pottery"
     ]
   ]
 }

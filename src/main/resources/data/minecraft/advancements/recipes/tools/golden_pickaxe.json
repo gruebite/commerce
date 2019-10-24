@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_gold_ingot": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:gold_ingot"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:golden_pickaxe"
       }
+    },
+    "gained_metalsmithing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "metalsmithing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_gold_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_metalsmithing"
     ]
   ]
 }

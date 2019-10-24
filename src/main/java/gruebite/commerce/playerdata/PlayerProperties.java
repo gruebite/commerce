@@ -1,7 +1,7 @@
-package com.github.gruebite.commerce.playerdata;
+package gruebite.commerce.playerdata;
 
-import com.github.gruebite.commerce.competencies.AdvancementTriggers;
-import com.github.gruebite.commerce.competencies.Competency;
+import gruebite.commerce.competencies.AdvancementTriggers;
+import gruebite.commerce.competencies.Competency;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.common.capabilities.Capability;

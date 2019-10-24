@@ -1,6 +1,6 @@
-package com.github.gruebite.commerce.competencies;
+package gruebite.commerce.competencies;
 
-import com.github.gruebite.commerce.Commerce;
+import gruebite.commerce.Commerce;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class CompetencyTrigger implements ICriterionTrigger<CompetencyTrigger.Instance> {
-    private static final ResourceLocation ID = new ResourceLocation(Commerce.MODID, "gained_competency");
+    private static final ResourceLocation ID = new ResourceLocation(Commerce.MODID, "gained_competencies");
     private final Map<PlayerAdvancements, Listeners> listeners = Maps.newHashMap();
 
     @Override

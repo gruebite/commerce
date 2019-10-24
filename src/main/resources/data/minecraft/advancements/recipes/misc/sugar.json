@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_reeds": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:sugar_cane"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:sugar"
       }
+    },
+    "gained_cooking": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "cooking"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_reeds",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_cooking"
     ]
   ]
 }
