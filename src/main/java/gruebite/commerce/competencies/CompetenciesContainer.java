@@ -28,6 +28,7 @@ public class CompetenciesContainer extends ChestContainer {
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final int INFO_IDX = 9*6-1;
+    private static final int CONVERT_IDX = 9*5;
 
     private static ItemStack simpleStack(Item item, String title, TextFormatting titleFormat, String[] lores, TextFormatting loresFormat) {
         ItemStack stack = new ItemStack(item);
@@ -59,10 +60,15 @@ public class CompetenciesContainer extends ChestContainer {
 
         int kp = PlayerProperties.getKnowledgePoints((ServerPlayerEntity)player);
         String kpString = "Knowledge Points: " + kp;
-        ItemStack stack = simpleStack(Items.BELL,
+        ItemStack bell = simpleStack(Items.BELL,
                 "Info", TextFormatting.BLUE,
                 new String[]{kpString}, TextFormatting.WHITE);
-        inv.setInventorySlotContents(INFO_IDX, stack);
+        inv.setInventorySlotContents(INFO_IDX, bell);
+
+        ItemStack convert = simpleStack(Items.EMERALD,
+                "Experience -> Emerald", TextFormatting.GREEN,
+                new String[]{"Convert 300exp to 1 emerald"}, TextFormatting.WHITE);
+        inv.setInventorySlotContents(CONVERT_IDX, convert);
         return inv;
     }
 
@@ -76,12 +82,12 @@ public class CompetenciesContainer extends ChestContainer {
         ItemStack itemStack = this.inventorySlots.get(slotId).getStack();
 
         if (itemStack.hasDisplayName()) {
-            try {
+            if (slotId < Competency.values().length) {
                 Competency competency = Competency.valueOf(itemStack.getDisplayName().getString().toUpperCase());
 
                 int kp = PlayerProperties.getKnowledgePoints((ServerPlayerEntity) player);
-                if (competency.getCost() <= kp && !PlayerProperties.isCompetent((ServerPlayerEntity)player, competency)) {
-                    PlayerProperties.setKnowledgePoints((ServerPlayerEntity)player, kp - competency.getCost());
+                if (competency.getCost() <= kp && !PlayerProperties.isCompetent((ServerPlayerEntity) player, competency)) {
+                    PlayerProperties.setKnowledgePoints((ServerPlayerEntity) player, kp - competency.getCost());
                     PlayerProperties.becomeCompetent((ServerPlayerEntity) player, competency);
                     String kpString = "Knowledge Points: " + (kp - competency.getCost());
                     ItemStack stack = simpleStack(Items.BELL,
@@ -97,8 +103,13 @@ public class CompetenciesContainer extends ChestContainer {
                 } else if (competency.getCost() > kp) {
                     player.sendMessage(new StringTextComponent("You do not have enough knowledge points!"));
                 }
-            } catch (Exception e) {
-                // Do nothing.
+            } else if (slotId == CONVERT_IDX) {
+                if (player.experience >= 300) {
+                    player.giveExperiencePoints(-300);
+                    player.inventory.addItemStackToInventory(new ItemStack(Items.EMERALD));
+                } else {
+                    player.sendMessage(new StringTextComponent("You do not have enough experience (" + player.experience + ")!"));
+                }
             }
         }
 

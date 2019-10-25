@@ -14,24 +14,24 @@ Commerce is a Minecraft mod. Its goals are to:
 
 Commerce is entirely server side. What this means is that any vanilla client can participate in a Commerce server. However, to run the server you will need Forge, which you can download [here]().
 
-This mod does not aim to be compatible with other mods, especially if they have their own additions. This mod's primary focus is augmenting the Minecraft experience.
+This mod does not aim to be compatible with other mods, especially if they have their own additions. This mod's primary focus is augmenting the vanilla Minecraft experience.
 
 ## Augmentations
 
-One of the main goals is to make small, subtle changes with big impact on gameplay. Commerce focuses on using existing systems, just modified slightly. There are a couple exceptions, this biggest is the concept of Knowledge Points and Competencies.
+One of the main goals is to make small, subtle changes with big impact on gameplay. Commerce focuses on using existing systems, modified slightly. There are a couple exceptions, the biggest are the concept of Knowledge Points and Competencies.
 
 ## Scarcity
 
-Scarcity is a fundamental concept in economics. Without something being scarce, it can't have value. Scarcity can be contextual. For example, air on earth is free because of it's abundance, but for a colony on mars, or a toxic city, it could be worth something. In vanilla Minecraft, scarcity is rare; everyone can just go and get the item they desire with relative ease. A symptom of this is the usefulness of villagers is underutilized.
+Scarcity is a fundamental concept in economics. Without something being scarce, it can't have value. Scarcity is contextual. For example, air on earth is free because of its abundance, but for a colony on mars, or a toxic city, it has value. In vanilla Minecraft, there is little scarcity; everyone can just go and get the item they desire with relative ease. A symptom of this is trading and villager utilization is neglected.
 
-Commerce creates scarcity by gating what players can do behind *Competencies*. Everyone starts out with X Knowledge Points, or KP, which they can use to purchase. To compliment Minecraft's core progression through the attainment of items, there is not progression for Competencies, or way to gain KP. You can purchase competencies at the start of the game. All decisions are permanent though, so it might be wise to be a bit flexible in the beginning.
+Commerce creates scarcity by gating what players can do behind *Competencies*. Everyone starts out with X Knowledge Points, or KP, which they can use to purchase Competencies. To compliment Minecraft's core progression through the attainment of items, there is no progression for Competencies, or way to gain KP. You can purchase competencies at the start of the game. All decisions are permanent though, so it might be wise to be flexible in the beginning.
 
 There are some things that every player can do, the "Core" competencies:
 
-Can place all objects (redstone & seeds are an exception and requires certain skills).
-Can consume potions.
-Can interract with chests, shulker boxes, books, lecturns, etc.
-Can use basic laborer stuff: buckets, sheers, clock, flint & steel.
+* Can place all objects (redstone & seeds are an exception and requires certain skills).
+* Can consume potions.
+* Can interract with chests, shulker boxes, books, lecturns, etc.
+* Can use basic laborer stuff: buckets, sheers, clock, flint & steel.
 
 * All wooden planks
 * Crafting table
@@ -49,7 +49,15 @@ Can use basic laborer stuff: buckets, sheers, clock, flint & steel.
 
 ### Competencies
 
-Competencies can be broken up into two categories: labor and craft. The distinction doesn't matter in game, but it's good to keep in mind where you're specializing. Too much emphasis on one category will make you more dependent, but it could also help if there is a community shortage.
+This is the list of competencies and what they do and craft. Below are some common items and the competencies you need to attain them:
+
+* Iron weapon/tool: carpentry (wood pickaxe) -> mining (stone) -> masonry (stone pickaxe) -> mining (iron ore) -> smelting (iron bar) -> metalsmithing
+* Potion: excavating (sand) -> smelting (glass) -> glassblowing (bottle) -> alchemy
+* Enchanted item (not including item): cartography (paper) -> tailoring (book) -> carpentry (bookshelve) -> engineering (enchanting table) -> enchanter
+
+Since a single player will not have all of these competencies at the same time, the ceiling is much lower for lone wolf characters and they would probably be more combat focused and steal what they need.
+
+Players start with 18KP by default (configurable), which limits them to about 1-2 major competencies, and a few minor ones. This can be adjusted based on the excpected server size, but shouldn't go below 12. The total KP required (at the time of writing) to acquire every competency is 127. Use this as a guide for community size. 18 would allow full coverage with ~7 people. However some competencies you would likely want a lot of overlap especially in free-for-all servers, like swordfighting, so you can supply an army.
 
 #### Alchemy
 
@@ -85,6 +93,8 @@ Can use bows and crossbows.
 * Fishing rod
 
 #### Cartography
+
+Can use cartography table.
 
 * Paper
 * Maps

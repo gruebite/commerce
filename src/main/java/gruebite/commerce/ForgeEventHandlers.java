@@ -11,10 +11,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.container.SimpleNamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
@@ -24,6 +26,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.enchanting.EnchantmentLevelSetEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
@@ -50,14 +53,14 @@ public class ForgeEventHandlers {
         if (!(event.getEntity() instanceof ServerPlayerEntity)) {
             return;
         }
-        ToolType toolType = event.getState().getBlock().getHarvestTool(event.getState());
+        Block block = event.getState().getBlock();
+        ToolType toolType = block.getHarvestTool(event.getState());
         ServerPlayerEntity player = (ServerPlayerEntity)event.getPlayer();
         if (toolType == ToolType.SHOVEL && !PlayerProperties.isCompetent(player, Competency.EXCAVATING)) {
             event.setCanceled(true);
-        } else if (toolType == ToolType.AXE && !PlayerProperties.isCompetent(player, Competency.WOODCUTTING)) {
+        } else if (block.isIn(BlockTags.LOGS) && !PlayerProperties.isCompetent(player, Competency.WOODCUTTING)) {
             event.setCanceled(true);
-        } else if (toolType == ToolType.PICKAXE &&
-                !PlayerProperties.isCompetent(player, Competency.MINING)) {
+        } else if (toolType == ToolType.PICKAXE && !PlayerProperties.isCompetent(player, Competency.MINING)) {
             event.setCanceled(true);
         }
     }
@@ -68,13 +71,13 @@ public class ForgeEventHandlers {
             return;
         }
         LOGGER.info("RIGHTCLICK {}", event.getItemStack().getItem().getRegistryName());
-        if (event.getItemStack().getItem().equals(Items.STICK)) {
-            PlayerProperties.becomeCompetent((ServerPlayerEntity) event.getPlayer(), Competency.CARPENTRY);
-        } else if (event.getItemStack().getItem() == Items.EMERALD &&
+        if (event.getItemStack().getItem() == Items.EMERALD &&
                 PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.ENCHANTING)) {
-            event.getPlayer().setHeldItem(Hand.MAIN_HAND, ItemStack.EMPTY);
-            event.getPlayer().giveExperiencePoints(500);
-        } else if (event.getItemStack().getItem().equals(Items.PUMPKIN)) {
+            ItemStack stack = event.getPlayer().getHeldItemMainhand();
+            stack.setCount(stack.getCount() - 1);
+            event.getPlayer().setHeldItem(Hand.MAIN_HAND, stack);
+            event.getPlayer().giveExperiencePoints(300);
+        } else if (event.getItemStack().getDisplayName().getString().equals("Strange Stick")) {
             event.getPlayer().openContainer(
                     new SimpleNamedContainerProvider(
                             new CompetenciesContainerProvider(),
@@ -118,10 +121,10 @@ public class ForgeEventHandlers {
         }
 
         if (entity instanceof ServerPlayerEntity) {
-            if (event.getEntityBeingMounted() instanceof BoatEntity &&
-                    !PlayerProperties.isCompetent((ServerPlayerEntity) entity, Competency.SEAFARING)) {
+            boolean isBoat = event.getEntityBeingMounted() instanceof BoatEntity;
+            if (isBoat && !PlayerProperties.isCompetent((ServerPlayerEntity) entity, Competency.SEAFARING)) {
                 event.setCanceled(true);
-            } else if (!PlayerProperties.isCompetent((ServerPlayerEntity)entity, Competency.RIDING)) {
+            } else if (!isBoat && !PlayerProperties.isCompetent((ServerPlayerEntity)entity, Competency.RIDING)) {
                 event.setCanceled(true);
             }
         }
@@ -136,6 +139,30 @@ public class ForgeEventHandlers {
         if (!PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.FARMING)) {
             event.setCanceled(true);
         }
+    }
+
+    @SubscribeEvent
+    public void onEquip(LivingEquipmentChangeEvent event) {
+        // Server side only.
+
+        if (!(event.getEntityLiving() instanceof ServerPlayerEntity)) {
+            return;
+        }
+/*
+        boolean isShield = event.getSlot() == EquipmentSlotType.OFFHAND;
+        boolean isMainhand = event.getSlot() == EquipmentSlotType.MAINHAND;
+
+        if (isShield && PlayerProperties.isCompetent((ServerPlayerEntity)event.getEntityLiving(), Competency.SHIELDING)) {
+            return;
+        }
+
+        if (!isShield && !isMainhand && PlayerProperties.isCompetent((ServerPlayerEntity)event.getEntityLiving(), Competency.ARMORING)) {
+            return;
+        }
+
+        ItemStack stack = ((ServerPlayerEntity) event.getEntityLiving()).inventory.removeStackFromSlot(event.getSlot().getIndex());
+        ((ServerPlayerEntity) event.getEntityLiving()).dropItem(stack, true, true);
+        ((ServerPlayerEntity) event.getEntityLiving()).container.detectAndSendChanges();*/
     }
 
     @SubscribeEvent
@@ -207,6 +234,11 @@ public class ForgeEventHandlers {
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         event.getPlayer().getCapability(PlayerProperties.MARKER).ifPresent(note -> {
             // Do player logged in stuff like add inventory.
+            ItemStack stack = new ItemStack(Items.DEAD_BUSH);
+            if (!event.getPlayer().inventory.hasItemStack(stack)) {
+                stack.setDisplayName(new StringTextComponent("Strange Stick"));
+                event.getPlayer().inventory.addItemStackToInventory(stack);
+            }
         });
     }
 }

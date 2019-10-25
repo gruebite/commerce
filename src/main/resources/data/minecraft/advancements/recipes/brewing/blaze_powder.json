@@ -23,7 +23,7 @@
   },
   "requirements": [
     [
-      "gained_competency",
+      "gained_alchemy",
       "has_the_recipe"
     ]
   ]

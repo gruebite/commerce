@@ -57,7 +57,7 @@ public class Commerce
     {
         // Register custom advancement triggers.
         Method method;
-        method = ObfuscationReflectionHelper.findMethod(CriteriaTriggers.class, "register", ICriterionTrigger.class);
+        method = ObfuscationReflectionHelper.findMethod(CriteriaTriggers.class, "func_192118_a", ICriterionTrigger.class);
         method.setAccessible(true);
 
         try {

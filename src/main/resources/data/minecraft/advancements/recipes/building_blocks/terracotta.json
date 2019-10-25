@@ -12,11 +12,11 @@
         "recipe": "minecraft:terracotta"
       }
     },
-    "gained_potter": {
+    "gained_pottery": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "potter"
+          "pottery"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_potter"
+      "gained_pottery"
     ]
   ]
 }

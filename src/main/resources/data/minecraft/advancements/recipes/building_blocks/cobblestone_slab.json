@@ -12,11 +12,11 @@
         "recipe": "minecraft:cobblestone_slab"
       }
     },
-    "gained_stonecutting": {
+    "gained_masonry": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "stonecutting"
+          "masonry"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_stonecutting"
+      "gained_masonry"
     ]
   ]
 }
