@@ -12,11 +12,11 @@
         "recipe": "minecraft:iron_trapdoor"
       }
     },
-    "gained_carpentry": {
+    "gained_engineering": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "carpentry"
+          "engineering"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_carpentry"
+      "gained_engineering"
     ]
   ]
 }

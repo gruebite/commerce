@@ -12,11 +12,11 @@
         "recipe": "minecraft:rail"
       }
     },
-    "gained_metalsmithing": {
+    "gained_engineering": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "metalsmithing"
+          "engineering"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_metalsmithing"
+      "gained_engineering"
     ]
   ]
 }

@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_wooden_fences": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "minecraft:wooden_fences"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:composter"
       }
+    },
+    "gained_carpentry": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "carpentry"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_wooden_fences",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_carpentry"
     ]
   ]
 }

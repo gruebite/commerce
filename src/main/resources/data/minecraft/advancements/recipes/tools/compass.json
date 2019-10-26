@@ -12,11 +12,11 @@
         "recipe": "minecraft:compass"
       }
     },
-    "gained_engineering": {
+    "gained_cartography": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "engineering"
+          "cartography"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_engineering"
+      "gained_cartography"
     ]
   ]
 }

@@ -104,11 +104,11 @@ public class CompetenciesContainer extends ChestContainer {
                     player.sendMessage(new StringTextComponent("You do not have enough knowledge points!"));
                 }
             } else if (slotId == CONVERT_IDX) {
-                if (player.experience >= 300) {
+                if (player.experienceTotal >= 300) {
                     player.giveExperiencePoints(-300);
                     player.inventory.addItemStackToInventory(new ItemStack(Items.EMERALD));
                 } else {
-                    player.sendMessage(new StringTextComponent("You do not have enough experience (" + player.experience + ")!"));
+                    player.sendMessage(new StringTextComponent("You do not have enough experience (" + player.experienceTotal + ")!"));
                 }
             }
         }

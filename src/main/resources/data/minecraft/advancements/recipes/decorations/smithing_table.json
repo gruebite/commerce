@@ -6,27 +6,25 @@
     ]
   },
   "criteria": {
-    "has_iron_ingot": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:iron_ingot"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:smithing_table"
       }
+    },
+    "gained_engineering": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "engineering"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_iron_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_engineering"
     ]
   ]
 }

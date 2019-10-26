@@ -20,6 +20,10 @@ This mod does not aim to be compatible with other mods, especially if they have 
 
 One of the main goals is to make small, subtle changes with big impact on gameplay. Commerce focuses on using existing systems, modified slightly. There are a couple exceptions, the biggest are the concept of Knowledge Points and Competencies.
 
+List of augmentations:
+
+* Furnaces cannot cook food. Meat turns rotten, potatoes turn poisonous.
+
 ## Scarcity
 
 Scarcity is a fundamental concept in economics. Without something being scarce, it can't have value. Scarcity is contextual. For example, air on earth is free because of its abundance, but for a colony on mars, or a toxic city, it has value. In vanilla Minecraft, there is little scarcity; everyone can just go and get the item they desire with relative ease. A symptom of this is trading and villager utilization is neglected.
@@ -71,6 +75,14 @@ Can use the brewing stand.
 
 Can use bows and crossbows.
 
+#### Arming
+
+Can use heavy armor (metal) and shields.
+
+#### Armorsmithing
+
+* All armor, except leather.
+
 #### Carpentry
 
 * All wooden stairs
@@ -88,6 +100,7 @@ Can use bows and crossbows.
 * Armor stand
 * Ladder
 * Loom
+* Composter
 * Lectern
 * Doors/trapdoors
 * Fishing rod
@@ -121,20 +134,17 @@ Can use enchanting table.
 
 #### Engineering
 
-* Brewing stand
-* Enchanting table
-* Glowstone
-* Sea lantern
-* Ender chest
+* Conduit
+* Glowstone, sea lantern, lantern
+* Ender chest, shulkerbox
 * End rod
 * Jukebox
-* Shulkerbox
-* Smoker
+* Smoker, grindstone, stonecutter, smithingtable, enchanting table, brewingstand
 * Buttons, levers, pressure plates, hopper, comparator, daylight sensor, dispenser, dropper,
   observer, piston, repeater, tnt, tripwire, trapped chest
 * Clock
-* Compass
-* Special rails, special minecarts
+* Rails, special rails, minecarts, special minecarts
+* Iron bars, door, trapdoors
 
 #### Farming
 
@@ -180,18 +190,6 @@ Can use tridents.
 * Stone sword/tools
 * Furnace
 
-#### Metalsmithing
-
-* Cauldron
-* Iron armor/sword/tools
-* Gold armor/sword/tools
-* Shield
-* Lantern
-* Iron bars
-* Iron door/trapdoors
-* Rail
-* Minecart
-
 #### Pottery
 
 * Terracotta, glazed, and colored
@@ -223,6 +221,23 @@ Can use swords.
 * Banners
 * Item frame
 * Book
+
+#### Taming
+
+Can tame animals.
+
+* Leads
+
+#### Toolsmithing
+
+* All tools
+* Bucket
+* Anvil
+* Cauldron
+
+#### Weaponsmithing
+
+* All swords
 
 #### Woodcutting
 

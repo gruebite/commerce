@@ -12,11 +12,11 @@
         "recipe": "minecraft:stone_sword"
       }
     },
-    "gained_masonry": {
+    "gained_weaponsmithing": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "masonry"
+          "weaponsmithing"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_masonry"
+      "gained_weaponsmithing"
     ]
   ]
 }

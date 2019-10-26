@@ -15,7 +15,7 @@ public class PlayerProperties {
     @CapabilityInject(PlayerProperties.class)
     public static Capability<PlayerProperties> MARKER;
 
-    public static int DEFAULT_KNOWLEDGE_POINTS = 18;
+    public static int DEFAULT_KNOWLEDGE_POINTS = 24;
 
     public static boolean isCompetent(ServerPlayerEntity player, Competency competency) {
         LazyOptional<PlayerProperties> props = player.getCapability(PlayerProperties.MARKER);

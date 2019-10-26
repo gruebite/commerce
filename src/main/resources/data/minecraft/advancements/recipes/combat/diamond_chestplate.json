@@ -12,11 +12,11 @@
         "recipe": "minecraft:diamond_chestplate"
       }
     },
-    "gained_gemcutting": {
+    "gained_armorsmithing": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "gemcutting"
+          "armorsmithing"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_gemcutting"
+      "gained_armorsmithing"
     ]
   ]
 }

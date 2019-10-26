@@ -1,11 +1,11 @@
 package gruebite.commerce;
 
+import com.google.common.collect.ImmutableSet;
 import gruebite.commerce.competencies.CompetenciesContainerProvider;
 import gruebite.commerce.competencies.Competency;
 import gruebite.commerce.playerdata.PlayerProperties;
 import gruebite.commerce.playerdata.PropertiesDispatcher;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.BoatEntity;
@@ -14,9 +14,11 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.container.SimpleNamedContainerProvider;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
@@ -26,11 +28,15 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.enchanting.EnchantmentLevelSetEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.entity.living.AnimalTameEvent;
+import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Set;
 
 public class ForgeEventHandlers {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -44,6 +50,17 @@ public class ForgeEventHandlers {
         //player.inventory.dropAllItems();
         //player.container.detectAndSendChanges();
     }
+
+    private static final Set<Block> MINING_BLOCKS = ImmutableSet.of(
+        Blocks.ANDESITE, Blocks.COBBLESTONE, Blocks.DIORITE, Blocks.GRANITE, Blocks.PRISMARINE,
+        Blocks.STONE, Blocks.END_STONE, Blocks.MOSSY_COBBLESTONE, Blocks.NETHERRACK, Blocks.RED_SANDSTONE,
+        Blocks.SANDSTONE, Blocks.TERRACOTTA, Blocks.BLACK_TERRACOTTA, Blocks.BLUE_TERRACOTTA, Blocks.BROWN_TERRACOTTA,
+        Blocks.CYAN_TERRACOTTA, Blocks.GRAY_TERRACOTTA, Blocks.GREEN_TERRACOTTA, Blocks.LIGHT_BLUE_TERRACOTTA,
+        Blocks.LIGHT_GRAY_TERRACOTTA, Blocks.LIME_TERRACOTTA, Blocks.MAGENTA_TERRACOTTA, Blocks.ORANGE_TERRACOTTA,
+        Blocks.PINK_TERRACOTTA, Blocks.PURPLE_TERRACOTTA, Blocks.RED_TERRACOTTA, Blocks.WHITE_TERRACOTTA, Blocks.YELLOW_TERRACOTTA,
+        Blocks.PINK_TERRACOTTA, Blocks.COAL_ORE, Blocks.DIAMOND_ORE, Blocks.EMERALD_ORE, Blocks.GOLD_ORE, Blocks.IRON_ORE,
+        Blocks.LAPIS_ORE, Blocks.NETHER_QUARTZ_ORE, Blocks.REDSTONE_ORE
+    );
 
     @SubscribeEvent
     public void onBreak(PlayerEvent.BreakSpeed event) {
@@ -60,7 +77,7 @@ public class ForgeEventHandlers {
             event.setCanceled(true);
         } else if (block.isIn(BlockTags.LOGS) && !PlayerProperties.isCompetent(player, Competency.WOODCUTTING)) {
             event.setCanceled(true);
-        } else if (toolType == ToolType.PICKAXE && !PlayerProperties.isCompetent(player, Competency.MINING)) {
+        } else if (toolType == ToolType.PICKAXE && MINING_BLOCKS.contains(block) && !PlayerProperties.isCompetent(player, Competency.MINING)) {
             event.setCanceled(true);
         }
     }
@@ -111,6 +128,25 @@ public class ForgeEventHandlers {
         if (block == Blocks.CARTOGRAPHY_TABLE && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.CARTOGRAPHY)) {
             event.setCanceled(true);
         }
+        if (block == Blocks.CAMPFIRE && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.COOKING)) {
+            event.setCanceled(true);
+        }
+        // Villager stuff.
+        if (block == Blocks.LOOM && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.TAILORING)) {
+            event.setCanceled(true);
+        }
+        if (block == Blocks.STONECUTTER && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.MASONRY)) {
+            event.setCanceled(true);
+        }
+        if (block == Blocks.BLAST_FURNACE && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.SMELTING)) {
+            event.setCanceled(true);
+        }
+        if (block == Blocks.FLETCHING_TABLE && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.FLETCHING)) {
+            event.setCanceled(true);
+        }
+        if (block == Blocks.HOPPER && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.ENGINEERING)) {
+            event.setCanceled(true);
+        }
     }
 
     @SubscribeEvent
@@ -141,6 +177,12 @@ public class ForgeEventHandlers {
         }
     }
 
+    private static final Set<Item> HEAVY_ARMOR = ImmutableSet.of(
+            Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS,
+            Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS,
+            Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE, Items.DIAMOND_LEGGINGS, Items.DIAMOND_BOOTS
+    );
+
     @SubscribeEvent
     public void onEquip(LivingEquipmentChangeEvent event) {
         // Server side only.
@@ -148,21 +190,33 @@ public class ForgeEventHandlers {
         if (!(event.getEntityLiving() instanceof ServerPlayerEntity)) {
             return;
         }
-/*
-        boolean isShield = event.getSlot() == EquipmentSlotType.OFFHAND;
-        boolean isMainhand = event.getSlot() == EquipmentSlotType.MAINHAND;
 
-        if (isShield && PlayerProperties.isCompetent((ServerPlayerEntity)event.getEntityLiving(), Competency.SHIELDING)) {
+        EquipmentSlotType.Group slotType = event.getSlot().getSlotType();
+
+        if (slotType != EquipmentSlotType.Group.ARMOR && slotType != EquipmentSlotType.Group.HAND) {
             return;
         }
 
-        if (!isShield && !isMainhand && PlayerProperties.isCompetent((ServerPlayerEntity)event.getEntityLiving(), Competency.ARMORING)) {
+        if (!HEAVY_ARMOR.contains(event.getTo().getItem()) && event.getTo().getItem() != Items.SHIELD) {
             return;
         }
 
-        ItemStack stack = ((ServerPlayerEntity) event.getEntityLiving()).inventory.removeStackFromSlot(event.getSlot().getIndex());
-        ((ServerPlayerEntity) event.getEntityLiving()).dropItem(stack, true, true);
-        ((ServerPlayerEntity) event.getEntityLiving()).container.detectAndSendChanges();*/
+        ServerPlayerEntity player = (ServerPlayerEntity)event.getEntityLiving();
+
+        if (event.getTo().getItem() == Items.SHIELD && !PlayerProperties.isCompetent(player, Competency.ARMING)) {
+            ItemStack stack = player.getHeldItemOffhand();
+            player.setHeldItem(Hand.OFF_HAND, ItemStack.EMPTY);
+            player.dropItem(stack, true, true);
+            player.container.detectAndSendChanges();
+        }
+
+        if (HEAVY_ARMOR.contains(event.getTo().getItem()) && !PlayerProperties.isCompetent(player, Competency.ARMING)) {
+            int idx = event.getSlot().getIndex() + player.inventory.mainInventory.size();
+            ItemStack stack = player.inventory.getStackInSlot(idx);
+            player.inventory.setInventorySlotContents(idx, ItemStack.EMPTY);
+            player.dropItem(stack, true, true);
+            player.container.detectAndSendChanges();
+        }
     }
 
     @SubscribeEvent
@@ -182,7 +236,39 @@ public class ForgeEventHandlers {
         if (isAxe && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.WOODCUTTING)) {
             event.setCanceled(true);
         }
-        if (isTrident && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.LANCING)) {
+        if (isTrident && !PlayerProperties.isCompetent((ServerPlayerEntity)event.getPlayer(), Competency.SWORDFIGHTING)) {
+            event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public void onTame(AnimalTameEvent event) {
+        if (event.getAnimal().world.isRemote) {
+            return;
+        }
+
+        if (!(event.getTamer() instanceof ServerPlayerEntity)) {
+            return;
+        }
+
+        ServerPlayerEntity player = (ServerPlayerEntity)event.getTamer();
+
+        if (!PlayerProperties.isCompetent(player, Competency.TAMING)) {
+            event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public void onBreed(BabyEntitySpawnEvent event) {
+        if (event.getCausedByPlayer() == null) {
+            return;
+        }
+        ServerPlayerEntity player = (ServerPlayerEntity)event.getCausedByPlayer();
+        if (player.world.isRemote) {
+            return;
+        }
+
+        if (!PlayerProperties.isCompetent(player, Competency.BREEDING)) {
             event.setCanceled(true);
         }
     }

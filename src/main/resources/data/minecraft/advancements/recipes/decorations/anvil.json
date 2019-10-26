@@ -6,25 +6,25 @@
     ]
   },
   "criteria": {
-    "gained_metalsmithing": {
-      "trigger": "commerce:gained_competencies",
-      "conditions": {
-        "competencies": [
-          "metalsmithing"
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:anvil"
+      }
+    },
+    "gained_toolsmithing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "toolsmithing"
+        ]
       }
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "gained_metalsmithing"
+      "gained_toolsmithing"
     ]
   ]
 }

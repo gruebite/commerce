@@ -6,25 +6,25 @@
     ]
   },
   "criteria": {
-    "gained_metalsmithing": {
-      "trigger": "commerce:gained_competencies",
-      "conditions": {
-        "competencies": [
-          "metalsmithing"
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "minecraft:cauldron"
       }
+    },
+    "gained_toolsmithing": {
+      "trigger": "commerce:gained_competencies",
+      "conditions": {
+        "competencies": [
+          "toolsmithing"
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "gained_metalsmithing",
-      "has_the_recipe"
+      "has_the_recipe",
+      "gained_toolsmithing"
     ]
   ]
 }

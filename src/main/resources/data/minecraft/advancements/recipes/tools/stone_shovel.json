@@ -12,11 +12,11 @@
         "recipe": "minecraft:stone_shovel"
       }
     },
-    "gained_masonry": {
+    "gained_toolsmithing": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "masonry"
+          "toolsmithing"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_masonry"
+      "gained_toolsmithing"
     ]
   ]
 }

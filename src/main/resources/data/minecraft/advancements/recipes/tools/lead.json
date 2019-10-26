@@ -12,11 +12,11 @@
         "recipe": "minecraft:lead"
       }
     },
-    "gained_farming": {
+    "gained_taming": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "farming"
+          "taming"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_farming"
+      "gained_taming"
     ]
   ]
 }

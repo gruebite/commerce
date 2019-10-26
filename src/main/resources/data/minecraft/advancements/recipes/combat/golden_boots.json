@@ -12,11 +12,11 @@
         "recipe": "minecraft:golden_boots"
       }
     },
-    "gained_metalsmithing": {
+    "gained_armorsmithing": {
       "trigger": "commerce:gained_competencies",
       "conditions": {
         "competencies": [
-          "metalsmithing"
+          "armorsmithing"
         ]
       }
     }
@@ -24,7 +24,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "gained_metalsmithing"
+      "gained_armorsmithing"
     ]
   ]
 }
